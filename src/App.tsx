@@ -1,26 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { ReactElement } from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+import { Container } from '@material-ui/core';
+import { Routes, Route, Navigate } from 'react-router-dom';
+
+import './App.css';
+import { Header, PageNotFound, ROUTES } from './ common';
+import { CartPage, ProductsPage } from './features';
+
+const App = (): ReactElement => (
+    <div>
+        <Header totalSum={0} />
+        <Container fixed>
+            <Routes>
+                <Route path="/" element={<Navigate to={ROUTES.PRODUCT_PAGE} />} />
+                <Route path={ROUTES.PRODUCT_PAGE} element={<ProductsPage />} />
+                <Route path={ROUTES.CART_PAGE} element={<CartPage />} />
+                <Route path={ROUTES.PAGE_NOT_FOUND} element={<PageNotFound />} />
+                <Route path="*" element={<Navigate to="/404" />} />
+            </Routes>
+        </Container>
     </div>
-  );
-}
+);
 
 export default App;
