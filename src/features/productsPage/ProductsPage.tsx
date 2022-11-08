@@ -1,14 +1,28 @@
 import React, { ReactElement } from 'react';
 
-import { ProductItem } from './productItem';
+import { useSelector } from 'react-redux';
 
-export const ProductsPage = (): ReactElement => (
-    <div>
-        Products
-        <ProductItem
-            imgSrc=""
-            productDescription={"That's the best product ever!"}
-            productId="8"
-        />
-    </div>
-);
+import { AppStateType } from '../../app/store';
+
+import { ProductItem } from './productItem';
+import { ProductType } from './products-reducer';
+import styles from './ProductsPage.module.css';
+
+export const ProductsPage = (): ReactElement => {
+    const products = useSelector<AppStateType, Array<ProductType>>(
+        state => state.productsPage.products,
+    );
+
+    return (
+        <div className={styles.productsPageContainer}>
+            <h3>PRODUCTS</h3>
+            <div className={styles.productsContainer}>
+                {products.map(
+                    (product): ReactElement => (
+                        <ProductItem key={product.productId} product={product} />
+                    ),
+                )}
+            </div>
+        </div>
+    );
+};

@@ -6,6 +6,7 @@ import { action } from '@storybook/addon-actions';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import placeholder from '../../../ common/assets/image/placeholder.png';
+import { ProductType } from '../products-reducer';
 
 import { ProductItem } from './ProductItem';
 
@@ -21,10 +22,16 @@ const Template: ComponentStory<typeof ProductItem> = args => <ProductItem {...ar
 
 export const ProductItemBaseExample = Template.bind({});
 
-ProductItemBaseExample.args = {
+const product: ProductType = {
     imgSrc: placeholder,
     productDescription: "That's the best product ever!",
     productId: '8',
+    productName: 'PRODUCT',
+    pricePerUnit: 85,
+};
+
+ProductItemBaseExample.args = {
+    product,
     // @ts-ignore
     addItem: action("Button 'add to cart' was pressed"),
 };

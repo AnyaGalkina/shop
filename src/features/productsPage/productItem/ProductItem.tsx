@@ -1,37 +1,43 @@
-/* eslint-disable */
+import React, { ReactElement } from 'react';
 
-import React, { FC } from 'react';
+import { Button, Paper } from '@material-ui/core';
+import { useDispatch } from 'react-redux';
 
-import { Button } from '@material-ui/core';
+import { addProductToCart } from '../../cartPage';
+import { ProductType } from '../products-reducer';
 
 import styles from './ProductItem.module.css';
 
 type PropsType = {
-    imgSrc: string;
-    productDescription: string;
-    productId: string;
+    product: ProductType;
 };
 
-export const ProductItem: FC<PropsType> = ({
-    imgSrc,
-    productDescription, // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    productId,
-}: PropsType) => {
-    // const dispatch = useDispatch();
-    //
-    const handleOnAddToCardClick = (): void => {};
+export const ProductItem = ({ product }: PropsType): ReactElement => {
+    const dispatch = useDispatch();
+
+    const { imgSrc, productDescription, productName, pricePerUnit } = product;
+
+    const onAddToCardClickHandler = (): void => {
+        dispatch(addProductToCart({ product }));
+    };
 
     return (
-        <div className={styles.shoppingItemContainer}>
-            <img alt="product" src={imgSrc} className={styles.img} />
-            <div className={styles.itemDescription}>{productDescription}</div>
-            <Button
-                variant="contained"
-                style={{ width: '320px' }}
-                onClick={handleOnAddToCardClick}
-            >
-                Add to Cart
-            </Button>
-        </div>
+        <Paper elevation={3}>
+            <div className={styles.shoppingItemContainer}>
+                <img alt="product" src={imgSrc} className={styles.img} />
+                <h4 className={styles.title}>{productName}</h4>
+                <div className={styles.text}>{productDescription}</div>
+                <div className={styles.text}>
+                    PRICE: <b>{pricePerUnit}$</b>
+                </div>
+                <Button
+                    variant="contained"
+                    style={{ width: '320px' }}
+                    onClick={onAddToCardClickHandler}
+                >
+                    Add to Cart
+                </Button>
+            </div>
+        </Paper>
     );
 };
