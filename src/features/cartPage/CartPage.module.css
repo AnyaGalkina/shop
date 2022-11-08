@@ -1,4 +1,5 @@
 .cartContainer {
     display: flex;
     justify-content: space-between;
+    font-family: 'Figtree', sans-serif;
 }
