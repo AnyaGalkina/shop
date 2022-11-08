@@ -6,6 +6,7 @@ import { action } from '@storybook/addon-actions';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import placeholder from '../../../ common/assets/image/placeholder.png';
+import { ProductCartType } from '../cart-reducer';
 
 import { CartItem } from './CartItem';
 
@@ -23,11 +24,16 @@ const baseArgs = {
 
 const Template: ComponentStory<typeof CartItem> = args => <CartItem {...args} />;
 
-export const CartItemBaseExample = Template.bind({});
-CartItemBaseExample.args = {
-    ...baseArgs,
+const productCart: ProductCartType = {
     productId: '1',
     imgSrc: placeholder,
     productName: 'Best Product',
-    productCount: 5,
+    quantity: 5,
+    pricePerUnit: 70,
+};
+
+export const CartItemBaseExample = Template.bind({});
+CartItemBaseExample.args = {
+    ...baseArgs,
+    product: productCart,
 };
