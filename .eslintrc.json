@@ -119,7 +119,7 @@
         "react/jsx-props-no-spreading": [0, {
             "html": "ignore"
         }],
-//        "@typescript-eslint/no-unused-vars": ["error"],
+        "@typescript-eslint/no-unused-vars": ["error"],
         "@typescript-eslint/explicit-function-return-type": [
             "error",
             {

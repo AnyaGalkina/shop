@@ -1,2 +1,8 @@
 export { CartPage } from './CartPage';
-// export { OrderDetails } from './orderDetails';
+export {
+    cartReducer,
+    deleteProductFromCart,
+    addProductToCart,
+    decreaseQuantity,
+    increaseQuantity,
+} from './cart-reducer';

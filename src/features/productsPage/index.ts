@@ -1,2 +1,2 @@
 export { ProductsPage } from './ProductsPage';
-// export { productsReducer } from './products-reducer';
+export { productsReducer } from './products-reducer';

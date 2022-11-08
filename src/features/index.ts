@@ -1,2 +1,2 @@
-export { ProductsPage } from './productsPage';
-export { CartPage } from './cartPage';
+export { ProductsPage, productsReducer } from './productsPage';
+export { CartPage, cartReducer } from './cartPage';
