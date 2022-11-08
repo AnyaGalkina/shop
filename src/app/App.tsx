@@ -4,12 +4,12 @@ import { Container } from '@material-ui/core';
 import { Routes, Route, Navigate } from 'react-router-dom';
 
 import './App.css';
-import { Header, PageNotFound, ROUTES } from './ common';
-import { CartPage, ProductsPage } from './features';
+import { Header, PageNotFound, ROUTES } from '../ common';
+import { CartPage, ProductsPage } from '../features';
 
-const App = (): ReactElement => (
+export const App = (): ReactElement => (
     <div>
-        <Header totalSum={0} />
+        <Header />
         <Container fixed>
             <Routes>
                 <Route path="/" element={<Navigate to={ROUTES.PRODUCT_PAGE} />} />
@@ -21,5 +21,3 @@ const App = (): ReactElement => (
         </Container>
     </div>
 );
-
-export default App;
