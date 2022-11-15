@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react';
 
-import { Button } from '@material-ui/core';
+import { Button, Paper } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
 
 import {
@@ -41,27 +41,29 @@ export const CartItem = ({ product }: PropsType): ReactElement => {
     };
 
     return (
-        <div className={styles.cartItemContainer}>
-            <img alt="product" src={imgSrc} className={styles.img} />
-            <div>productName: {productName}</div>
-            <div>price Per Unit: {pricePerUnit}</div>
-            <div className={styles.itemQuantityContainer}>
-                <Button
-                    variant="contained"
-                    onClick={onDecreaseItemClickHandler}
-                    style={buttonStyles}
-                >
-                    -
-                </Button>
-                <div className={styles.itemQuantity}>{quantity}</div>
-                <Button
-                    variant="contained"
-                    onClick={onIncreaseQuantityClickHandler}
-                    style={buttonStyles}
-                >
-                    +
-                </Button>
+        <Paper style={{ width: '70%' }} elevation={3}>
+            <div className={styles.cartItemContainer}>
+                <img alt="product" src={imgSrc} className={styles.img} />
+                <div>productName: {productName}</div>
+                <div className={styles.itemQuantityContainer}>
+                    <Button
+                        variant="contained"
+                        onClick={onDecreaseItemClickHandler}
+                        style={buttonStyles}
+                    >
+                        -
+                    </Button>
+                    <div className={styles.itemQuantity}>{quantity}</div>
+                    <Button
+                        variant="contained"
+                        onClick={onIncreaseQuantityClickHandler}
+                        style={buttonStyles}
+                    >
+                        +
+                    </Button>
+                    <div className={styles.priceBlock}>{pricePerUnit} $</div>
+                </div>
             </div>
-        </div>
+        </Paper>
     );
 };

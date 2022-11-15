@@ -1,17 +1,14 @@
 .cartItemContainer {
     height: 200px;
-    width: 70%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border: 1px solid gray;
     margin-bottom: 20px;
-    margin-left: 20px;
 }
 
 .img {
     height: 200px;
-    width: 300px;
+    width: 250px;
 }
 
 .itemQuantityContainer {
@@ -24,6 +21,13 @@
 .itemQuantity {
     margin: 0 15px;
     font-size: 16px;
+}
+
+.priceBlock {
+    width: 35%;
+    font-weight: 900;
+    font-size: 20px;
+    padding: 0 10px 0 30px;
 }
 
 @media screen and(max-width: 790px) {
