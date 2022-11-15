@@ -5,7 +5,8 @@ import { action } from '@storybook/addon-actions';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import placeholder from '../../../ common/assets/image/placeholder.png';
+import { ReduxStoreProviderDecorator } from '../../../app/ReduxStoreProviderDecorator';
+import placeholder from '../../../common/assets/image/placeholder.png';
 import { ProductType } from '../products-reducer';
 
 import { ProductItem } from './ProductItem';
@@ -13,6 +14,7 @@ import { ProductItem } from './ProductItem';
 export default {
     title: 'Shop/Product_Page/ProductItem_Component',
     component: ProductItem,
+    decorators: [ReduxStoreProviderDecorator],
     args: {
         addItem: action("Button 'add to cart' was pressed"),
     },

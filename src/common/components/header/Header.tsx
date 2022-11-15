@@ -21,15 +21,23 @@ const paperStyles = {
 };
 const toolbarStyles = { display: 'flex', justifyContent: 'end' };
 
+// type PropsType = {
+//     demo?: boolean;
+// };
+
 export const Header = (): ReactElement => {
+    // if (!demo) {
     const navigate = useNavigate();
+    // }
     const productsCartList = useSelector<AppStateType, Array<ProductCartType>>(
         state => state.cartPage.productsCartList,
     );
     const totalSum = useSelector<AppStateType, number>(state => state.cartPage.totalSum);
 
     const onCartClickHandler = (): void => {
+        // if (!demo) {
         navigate(ROUTES.CART_PAGE);
+        // }
     };
 
     return (

@@ -4,7 +4,7 @@ import thunk from 'redux-thunk';
 
 import { cartReducer, productsReducer } from '../features';
 
-const rootReducer = combineReducers({
+export const rootReducer = combineReducers({
     productsPage: productsReducer,
     cartPage: cartReducer,
 });
