@@ -5,12 +5,13 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 
 import './App.css';
 import { Header, PageNotFound, ROUTES } from '../common';
+import bg from '../common/assets/image/17580.jpg';
 import { CartPage, ProductsPage } from '../features';
 
 export const App = (): ReactElement => (
-    <div>
+    <div className="App" style={{ backgroundImage: `url(${bg})` }}>
         <Header />
-        <Container fixed>
+        <Container fixed style={{ position: 'relative' }}>
             <Routes>
                 <Route path="/" element={<Navigate to={ROUTES.PRODUCT_PAGE} />} />
                 <Route path={ROUTES.PRODUCT_PAGE} element={<ProductsPage />} />

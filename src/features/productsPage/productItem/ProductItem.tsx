@@ -22,7 +22,7 @@ export const ProductItem = ({ product }: PropsType): ReactElement => {
     };
 
     return (
-        <Paper elevation={3}>
+        <Paper elevation={3} style={{ marginBottom: '30px' }}>
             <div className={styles.shoppingItemContainer}>
                 <img alt="product" src={imgSrc} className={styles.img} />
                 <h4 className={styles.title}>{productName}</h4>

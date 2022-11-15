@@ -41,10 +41,10 @@ export const CartItem = ({ product }: PropsType): ReactElement => {
     };
 
     return (
-        <Paper style={{ width: '70%' }} elevation={3}>
+        <Paper elevation={3}>
             <div className={styles.cartItemContainer}>
                 <img alt="product" src={imgSrc} className={styles.img} />
-                <div>productName: {productName}</div>
+                <div className={styles.itemQuantityContainer}>{productName}</div>
                 <div className={styles.itemQuantityContainer}>
                     <Button
                         variant="contained"
@@ -61,8 +61,8 @@ export const CartItem = ({ product }: PropsType): ReactElement => {
                     >
                         +
                     </Button>
-                    <div className={styles.priceBlock}>{pricePerUnit} $</div>
                 </div>
+                <div className={styles.priceBlock}>{pricePerUnit} $</div>
             </div>
         </Paper>
     );

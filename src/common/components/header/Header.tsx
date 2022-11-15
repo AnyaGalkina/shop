@@ -19,7 +19,12 @@ const paperStyles = {
     marginRight: '20px',
     paddingRight: '5px',
 };
-const toolbarStyles = { display: 'flex', justifyContent: 'end' };
+const toolbarStyles = {
+    display: 'flex',
+    justifyContent: 'end',
+    backgroundColor: '#161616',
+    color: '#c29f79',
+};
 
 // type PropsType = {
 //     demo?: boolean;
@@ -43,7 +48,7 @@ export const Header = (): ReactElement => {
     return (
         <Box>
             <AppBar position="static">
-                <Toolbar style={toolbarStyles} color="secondary">
+                <Toolbar style={toolbarStyles}>
                     <Paper
                         // @ts-ignore
                         style={paperStyles}

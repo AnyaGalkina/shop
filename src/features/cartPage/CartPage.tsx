@@ -31,15 +31,20 @@ export const CartPage = (): ReactElement => {
                         {productsAtCart.map(p => {
                             return <CartItem key={p.productId} product={p} />;
                         })}
-                        <div>Total: {totalSum}</div>
-                        <Button onClick={onStartShoppingClickHandler}>
-                            Back to shopping
-                        </Button>
+                        <div className={styles.totalSumBlock}>
+                            <h4>Total: {totalSum}</h4>
+                            <Button
+                                variant="contained"
+                                onClick={onStartShoppingClickHandler}
+                            >
+                                Back to shopping
+                            </Button>
+                        </div>
                     </div>
                 ) : (
-                    <div>
+                    <div className={styles.totalSumBlock}>
                         <h4>The cart is empty</h4>
-                        <Button onClick={onStartShoppingClickHandler}>
+                        <Button variant="contained" onClick={onStartShoppingClickHandler}>
                             Start shopping now
                         </Button>
                     </div>
