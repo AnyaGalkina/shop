@@ -43,7 +43,7 @@ export const Header = (): ReactElement => {
     return (
         <Box>
             <AppBar position="static">
-                <Toolbar style={toolbarStyles}>
+                <Toolbar style={toolbarStyles} color="secondary">
                     <Paper
                         // @ts-ignore
                         style={paperStyles}
