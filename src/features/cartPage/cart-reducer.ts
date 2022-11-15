@@ -12,7 +12,20 @@ const initialState = {
             pricePerUnit: 0,
         },
     ] as Array<ProductCartType>,
+    contactDetails: {
+        name: '',
+        surname: '',
+        address: '',
+        phone: '',
+    } as ContactDetailsType,
     totalSum: 0,
+};
+
+export type ContactDetailsType = {
+    name: string;
+    surname: string;
+    address: string;
+    phone: string;
 };
 
 export type ProductCartType = {
