@@ -2,35 +2,34 @@ import React, { ReactElement } from 'react';
 
 import { Button, Paper, TextField } from '@material-ui/core';
 import { useFormik } from 'formik';
+import { useDispatch } from 'react-redux';
 import * as Yup from 'yup';
 import 'yup-phone';
+
+import { addContactDetails } from '../cart-reducer';
 
 import styles from './ContactDetails.module.css';
 
 const textFieldStyles = { marginBottom: '10px', width: '280px' };
 const MAX_NAME_LENGTH = 128;
 const MAX_ADDRESS_LENGTH = 500;
-// const phoneRegExp = /^(\+?\d{0,4})?\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{4}\)?)?$/
 
 export const FormSchema = Yup.object().shape({
     firstName: Yup.string()
-        // .min(2, '.')
         .max(MAX_NAME_LENGTH, `Maximum ${MAX_NAME_LENGTH} symbol.`)
         .required('Field is required'),
     surname: Yup.string()
-        // .min(2, 'Field may not be less than 2 letters or include numeric values/symbols.')
         .max(MAX_NAME_LENGTH, `Maximum ${MAX_NAME_LENGTH} symbol.`)
         .required('Field is required'),
     address: Yup.string()
-        // .min(2, 'Field may not be less than 2 letters or include numeric values/symbols.')
         .max(MAX_ADDRESS_LENGTH, `Maximum ${MAX_ADDRESS_LENGTH} symbol.`)
         .required('Field is required'),
-    //     .required('Must include the "@" symbol and valid domain (e.g. .com, .net).')
-    //     .email('Must include the "@" symbol and valid domain (e.g. .com, .net).'),
     phone: Yup.string().phone('IN').required('A phone number is required'),
 });
 
 export const ContactDetails = (): ReactElement => {
+    const dispatch = useDispatch();
+
     const formik = useFormik({
         initialValues: {
             firstName: '',
@@ -39,7 +38,8 @@ export const ContactDetails = (): ReactElement => {
             phone: '',
         },
         validationSchema: FormSchema,
-        onSubmit: (): void => {
+        onSubmit: (values): void => {
+            dispatch(addContactDetails(values));
             formik.resetForm();
         },
     });

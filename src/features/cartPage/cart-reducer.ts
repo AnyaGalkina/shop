@@ -13,7 +13,7 @@ const initialState = {
         },
     ] as Array<ProductCartType>,
     contactDetails: {
-        name: '',
+        firstName: '',
         surname: '',
         address: '',
         phone: '',
@@ -22,7 +22,7 @@ const initialState = {
 };
 
 export type ContactDetailsType = {
-    name: string;
+    firstName: string;
     surname: string;
     address: string;
     phone: string;
@@ -44,6 +44,9 @@ const slice = createSlice({
     name: 'cartPage',
     initialState,
     reducers: {
+        addContactDetails(state, action: PayloadAction<ContactDetailsType>) {
+            state.contactDetails = action.payload;
+        },
         addProductToCart(state, action: PayloadAction<{ product: ProductType }>) {
             const index = findIndexInProductCartArray(
                 action.payload.product.productId,
@@ -100,4 +103,5 @@ export const {
     deleteProductFromCart,
     addProductToCart,
     increaseQuantity,
+    addContactDetails,
 } = slice.actions;
