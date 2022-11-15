@@ -4,7 +4,7 @@ import { Container } from '@material-ui/core';
 import { Routes, Route, Navigate } from 'react-router-dom';
 
 import './App.css';
-import { Header, PageNotFound, ROUTES } from '../ common';
+import { Header, PageNotFound, ROUTES } from '../common';
 import { CartPage, ProductsPage } from '../features';
 
 export const App = (): ReactElement => (
