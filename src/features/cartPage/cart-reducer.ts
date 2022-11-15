@@ -1,13 +1,14 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
+import cake6 from '../../common/assets/image/products/cake6.png';
 import { ProductType } from '../productsPage/products-reducer';
 
 const initialState = {
     productsCartList: [
         {
-            productId: '9',
-            imgSrc: '',
-            productName: 'gift',
+            productId: '42',
+            imgSrc: cake6,
+            productName: 'Free gift',
             quantity: 1,
             pricePerUnit: 0,
         },

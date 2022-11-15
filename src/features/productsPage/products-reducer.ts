@@ -1,24 +1,36 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
+import cake1 from '../../common/assets/image/products/cake1.png';
+import cake2 from '../../common/assets/image/products/cake2.png';
+import cake3 from '../../common/assets/image/products/cake3.png';
+import cake4 from '../../common/assets/image/products/cake4.png';
+import cake5 from '../../common/assets/image/products/cake5.jpg';
+import cake7 from '../../common/assets/image/products/cake7.jpg';
+
+const imgSrcs = [cake1, cake2, cake3, cake4, cake5, cake7];
+// eslint-disable-next-line
+const pricePerUnits = [30, 60, 40, 35, 55, 120];
+const productNames = [
+    'BERRY PIE',
+    'CREAM CAKE',
+    'FRUIT BOWL',
+    'CHOCO ROLLS',
+    'FRUIT CAKE',
+    'ASSORTMENT CAKES',
+];
+
+// eslint-disable-next-line
+const productsArray: ProductType[] = new Array(6).fill(null).map((_, index) => ({
+    productId: index.toString(),
+    imgSrc: imgSrcs[index],
+    pricePerUnit: pricePerUnits[index],
+    productName: productNames[index],
+    productDescription:
+        'Sed non mauris vitae erat consequat auctor. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin nec sagitis sem nibh id elit vulputate cursus a sit amet mauris.',
+}));
+
 export const initialState = {
-    products: [
-        {
-            productId: '1',
-            imgSrc: 'https://digitalassets-shop.tesla.com/image/upload/f_auto,q_auto/v1/content/dam/tesla/studio/LIFESTYLE/OUTERWEAR/JACKETS/1866149-00-A_2_2000.jpg',
-            productName: 'Model X-mas Sweater',
-            productDescription:
-                "Whether you've been naughty or nice this year, our limited-edition Model X-mas Sweater will keep you warm all season long. With a festive pattern featuring the S3XY vehicle lineup, Supercharger, lightning bolt silhouette and Tesla wordmark, this hand-linked knit is the perfect addition to any holiday gathering. Made from 100% hypoallergenic acrylic to be extra soft and cozy.",
-            pricePerUnit: 50,
-        },
-        {
-            productId: '2',
-            imgSrc: 'https://digitalassets-shop.tesla.com/image/upload/f_auto,q_auto/v1/content/dam/tesla/studio/LIFESTYLE/OUTERWEAR/JACKETS/1866149-00-A_2_2000.jpg',
-            productName: 'Model X-mas Sweater',
-            productDescription:
-                "Whether you've been naughty or nice this year, our limited-edition Model X-mas Sweater will keep you warm all season long. With a festive pattern featuring the S3XY vehicle lineup, Supercharger, lightning bolt silhouette and Tesla wordmark, this hand-linked knit is the perfect addition to any holiday gathering. Made from 100% hypoallergenic acrylic to be extra soft and cozy.",
-            pricePerUnit: 50,
-        },
-    ] as Array<ProductType>,
+    products: [...productsArray] as Array<ProductType>,
 };
 
 export type ProductType = {
