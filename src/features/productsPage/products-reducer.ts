@@ -1,5 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 
+import { setAppStatus } from '../../app';
+
 import { productsPageAPI } from './api-productsPage';
 
 // import cake1 from '../../common/assets/image/products/cake1.png';
@@ -49,17 +51,16 @@ export type ProductType = {
 export const getProductsTC = createAsyncThunk(
     'productsPage/setProducts',
     async (param: {}, { dispatch }) => {
-        //     // dispatch(setAppStatus({status: "loading"}))
+        dispatch(setAppStatus({ appStatus: 'loading' }));
         try {
             const response = await productsPageAPI.getProducts();
 
-            // console.log(response.data.products);
             dispatch(setProducts({ products: response.data.products }));
         } catch (error) {
             //         // handleServerNetworkError(error, dispatch);
             //         return rejectWithValue(null);
         } finally {
-            //         // dispatch(setAppStatus({status: "idle"}));
+            dispatch(setAppStatus({ appStatus: 'idle' }));
         }
     },
 );

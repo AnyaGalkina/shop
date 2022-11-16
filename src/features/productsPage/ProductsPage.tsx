@@ -14,7 +14,6 @@ export const ProductsPage = (): ReactElement => {
     const products = useSelector<AppStateType, Array<ProductType>>(
         state => state.productsPage.products,
     );
-    // console.log(JSON.stringify(products));
 
     useEffect(() => {
         dispatch(getProductsTC({}));

@@ -5,9 +5,12 @@ import thunk from 'redux-thunk';
 import { loadState, saveState } from '../common';
 import { cartReducer, productsReducer } from '../features';
 
+import { appReducer } from './app-reducer';
+
 export const rootReducer = combineReducers({
     productsPage: productsReducer,
     cartPage: cartReducer,
+    app: appReducer,
 });
 
 export const store = configureStore({

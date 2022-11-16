@@ -1,8 +1,10 @@
 import React, { ReactElement } from 'react';
 
 import { Button, Paper } from '@material-ui/core';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
+import { AppStatusType } from '../../../app/app-reducer';
+import { AppStateType } from '../../../app/store';
 import { addProductToCart } from '../../cartPage';
 import { ProductType } from '../products-reducer';
 
@@ -14,6 +16,9 @@ type PropsType = {
 
 export const ProductItem = ({ product }: PropsType): ReactElement => {
     const dispatch = useDispatch();
+    const appStatus = useSelector<AppStateType, AppStatusType>(
+        state => state.app.appStatus,
+    );
 
     const { imgSrc, productDescription, productName, pricePerUnit } = product;
 
@@ -31,6 +36,7 @@ export const ProductItem = ({ product }: PropsType): ReactElement => {
                     PRICE: <b>{pricePerUnit}$</b>
                 </div>
                 <Button
+                    disabled={appStatus === 'loading'}
                     variant="contained"
                     style={{ width: '320px', color: '#fff' }}
                     onClick={onAddToCardClickHandler}
