@@ -22,6 +22,12 @@ const initialState = {
     totalSum: 0,
 };
 
+export type InitialStateCartType = {
+    productsCartList: Array<ProductCartType>;
+    contactDetails: ContactDetailsType;
+    totalSum: number;
+};
+
 export type ContactDetailsType = {
     firstName: string;
     surname: string;
