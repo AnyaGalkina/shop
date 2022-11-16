@@ -1,24 +1,24 @@
 {
   "files": {
     "main.css": "/shop/static/css/main.1f3dc83b.css",
-    "main.js": "/shop/static/js/main.ca51c1e8.js",
+    "main.js": "/shop/static/js/main.21e6c259.js",
     "static/js/787.23170c61.chunk.js": "/shop/static/js/787.23170c61.chunk.js",
-    "static/media/cake1.png": "/shop/static/media/cake1.a5fcf0e72a42a3a75512.png",
     "static/media/notFoundPage.png": "/shop/static/media/notFoundPage.f3201fbac0ca2ab1a95e.png",
-    "static/media/cake5.jpg": "/shop/static/media/cake5.59d16c2c12f0d63769fa.jpg",
-    "static/media/cake3.png": "/shop/static/media/cake3.36e5a6bf99e5d9ecb538.png",
-    "static/media/cake7.jpg": "/shop/static/media/cake7.de2d31271363eeb1e626.jpg",
-    "static/media/cake4.png": "/shop/static/media/cake4.9eb390cd2aea661c90d5.png",
-    "static/media/cake6.png": "/shop/static/media/cake6.2de62116c3e6721b2daa.png",
-    "static/media/cake2.png": "/shop/static/media/cake2.7870ad3744e0ebf04d71.png",
+    "static/media/cake5.jpg": "/shop/static/media/cake5.5235700359e6f01d593f.jpg",
+    "static/media/cake7.jpg": "/shop/static/media/cake7.d595e366edbae8d056b3.jpg",
+    "static/media/cake1.png": "/shop/static/media/cake1.88ecfd336622585b7e03.png",
+    "static/media/cake3.png": "/shop/static/media/cake3.71fec48afbe4be62432c.png",
     "static/media/17580.jpg": "/shop/static/media/17580.4d5f5fbea447ccb6e202.jpg",
+    "static/media/cake4.png": "/shop/static/media/cake4.d3efda04caed89a6392e.png",
+    "static/media/cake6.png": "/shop/static/media/cake6.16e36484d88aca43d408.png",
+    "static/media/cake2.png": "/shop/static/media/cake2.064923adabee69130610.png",
     "index.html": "/shop/index.html",
     "main.1f3dc83b.css.map": "/shop/static/css/main.1f3dc83b.css.map",
-    "main.ca51c1e8.js.map": "/shop/static/js/main.ca51c1e8.js.map",
+    "main.21e6c259.js.map": "/shop/static/js/main.21e6c259.js.map",
     "787.23170c61.chunk.js.map": "/shop/static/js/787.23170c61.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.1f3dc83b.css",
-    "static/js/main.ca51c1e8.js"
+    "static/js/main.21e6c259.js"
   ]
 }
