@@ -15,7 +15,7 @@ export const ProductsPage = (): ReactElement => {
 
     return (
         <div className={styles.productsPageContainer}>
-            <h3>PRODUCTS</h3>
+            <h3>SHOP NOW</h3>
             <div className={styles.productsContainer}>
                 {products.map(
                     (product): ReactElement => (

@@ -10,3 +10,7 @@
 .formHeader{
     padding: 20px;
 }
+
+.error {
+    color: darkred;
+}

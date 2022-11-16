@@ -17,10 +17,12 @@ type PropsType = {
 };
 
 const buttonStyles = {
-    maxWidth: '30px',
-    maxHeight: '30px',
-    minWidth: '30px',
-    minHeight: '30px',
+    maxWidth: '35px',
+    maxHeight: '35px',
+    minWidth: '35px',
+    minHeight: '35px',
+    color: '#fff',
+    fontWeight: '900',
 };
 
 export const CartItem = ({ product }: PropsType): ReactElement => {

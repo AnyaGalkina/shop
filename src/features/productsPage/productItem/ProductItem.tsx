@@ -32,7 +32,7 @@ export const ProductItem = ({ product }: PropsType): ReactElement => {
                 </div>
                 <Button
                     variant="contained"
-                    style={{ width: '320px' }}
+                    style={{ width: '320px', color: '#fff' }}
                     onClick={onAddToCardClickHandler}
                 >
                     Add to Cart

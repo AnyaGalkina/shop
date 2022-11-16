@@ -57,7 +57,7 @@ export const ContactDetails = (): ReactElement => {
                     {...formik.getFieldProps('firstName')}
                 />
                 {formik.touched.firstName && formik.errors.firstName && (
-                    <div>{formik.errors.firstName}</div>
+                    <div className={styles.error}>{formik.errors.firstName}</div>
                 )}
                 <TextField
                     style={textFieldStyles}
@@ -65,7 +65,7 @@ export const ContactDetails = (): ReactElement => {
                     {...formik.getFieldProps('surname')}
                 />
                 {formik.touched.surname && formik.errors.surname && (
-                    <div>{formik.errors.surname}</div>
+                    <div className={styles.error}>{formik.errors.surname}</div>
                 )}
                 <TextField
                     style={textFieldStyles}
@@ -73,7 +73,7 @@ export const ContactDetails = (): ReactElement => {
                     {...formik.getFieldProps('address')}
                 />
                 {formik.touched.address && formik.errors.address && (
-                    <div>{formik.errors.address}</div>
+                    <div className={styles.error}>{formik.errors.address}</div>
                 )}
                 <TextField
                     style={textFieldStyles}
@@ -81,9 +81,11 @@ export const ContactDetails = (): ReactElement => {
                     {...formik.getFieldProps('phone')}
                 />
                 {formik.touched.phone && formik.errors.phone && (
-                    <div>{formik.errors.phone}</div>
+                    <div className={styles.error}>{formik.errors.phone}</div>
                 )}
-                <Button type="submit">Order</Button>
+                <Button variant="contained" style={{ color: '#fff' }} type="submit">
+                    Order
+                </Button>
             </form>
         </Paper>
     );

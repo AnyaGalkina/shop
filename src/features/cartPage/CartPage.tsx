@@ -34,18 +34,23 @@ export const CartPage = (): ReactElement => {
                         <div className={styles.totalSumBlock}>
                             <h4>Total: {totalSum}</h4>
                             <Button
+                                style={{ color: '#fff' }}
                                 variant="contained"
                                 onClick={onStartShoppingClickHandler}
                             >
-                                Back to shopping
+                                BACK TO SHOPPING
                             </Button>
                         </div>
                     </div>
                 ) : (
                     <div className={styles.totalSumBlock}>
                         <h4>The cart is empty</h4>
-                        <Button variant="contained" onClick={onStartShoppingClickHandler}>
-                            Start shopping now
+                        <Button
+                            style={{ color: '#fff' }}
+                            variant="contained"
+                            onClick={onStartShoppingClickHandler}
+                        >
+                            SHOP NOW
                         </Button>
                     </div>
                 )}
