@@ -1,0 +1,46 @@
+{
+  "products": [
+    {
+      "productId": "0",
+      "imgSrc": "/shop/static/media/cake1.a5fcf0e72a42a3a75512.png",
+      "pricePerUnit": 30,
+      "productName": "BERRY PIE",
+      "productDescription": "Sed non mauris vitae erat consequat auctor. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin nec sagitis sem nibh id elit vulputate cursus a sit amet mauris."
+    },
+    {
+      "productId": "1",
+      "imgSrc": "/shop/static/media/cake2.7870ad3744e0ebf04d71.png",
+      "pricePerUnit": 60,
+      "productName": "CREAM CAKE",
+      "productDescription": "Sed non mauris vitae erat consequat auctor. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin nec sagitis sem nibh id elit vulputate cursus a sit amet mauris."
+    },
+    {
+      "productId": "2",
+      "imgSrc": "/shop/static/media/cake3.36e5a6bf99e5d9ecb538.png",
+      "pricePerUnit": 40,
+      "productName": "FRUIT BOWL",
+      "productDescription": "Sed non mauris vitae erat consequat auctor. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin nec sagitis sem nibh id elit vulputate cursus a sit amet mauris."
+    },
+    {
+      "productId": "3",
+      "imgSrc": "/shop/static/media/cake4.9eb390cd2aea661c90d5.png",
+      "pricePerUnit": 35,
+      "productName": "CHOCO ROLLS",
+      "productDescription": "Sed non mauris vitae erat consequat auctor. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin nec sagitis sem nibh id elit vulputate cursus a sit amet mauris."
+    },
+    {
+      "productId": "4",
+      "imgSrc": "/shop/static/media/cake5.59d16c2c12f0d63769fa.jpg",
+      "pricePerUnit": 55,
+      "productName": "FRUIT CAKE",
+      "productDescription": "Sed non mauris vitae erat consequat auctor. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin nec sagitis sem nibh id elit vulputate cursus a sit amet mauris."
+    },
+    {
+      "productId": "5",
+      "imgSrc": "/shop/static/media/cake7.de2d31271363eeb1e626.jpg",
+      "pricePerUnit": 120,
+      "productName": "ASSORTMENT CAKES",
+      "productDescription": "Sed non mauris vitae erat consequat auctor. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin nec sagitis sem nibh id elit vulputate cursus a sit amet mauris."
+    }
+  ]
+}
