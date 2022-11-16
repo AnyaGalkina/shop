@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { applyMiddleware, combineReducers, createStore } from 'redux';
 import thunk from 'redux-thunk';
 
-import cakeImg from '../common/assets/image/products/cake7.jpg';
+import cakeImg from '../../public/products/cake7.jpg';
 import { productsReducer } from '../features';
 import { cartReducer, ProductCartType } from '../features/cartPage/cart-reducer';
 

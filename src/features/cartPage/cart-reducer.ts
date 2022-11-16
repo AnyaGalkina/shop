@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import cake6 from '../../common/assets/image/products/cake6.png';
+import cake6 from '../../../public/products/cake6.png';
 import { ProductType } from '../productsPage/products-reducer';
 
 const initialState = {

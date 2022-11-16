@@ -5,8 +5,8 @@ import { action } from '@storybook/addon-actions';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
+import cakeImg from '../../../../public/products/cake6.png';
 import { ReduxStoreProviderDecorator } from '../../../app/ReduxStoreProviderDecorator';
-import cakeImg from '../../../common/assets/image/products/cake6.png';
 import { ProductCartType } from '../cart-reducer';
 
 import { CartItem } from './CartItem';
