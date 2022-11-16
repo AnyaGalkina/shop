@@ -32,7 +32,7 @@ export const CartPage = (): ReactElement => {
                             return <CartItem key={p.productId} product={p} />;
                         })}
                         <div className={styles.totalSumBlock}>
-                            <h4>Total: {totalSum}</h4>
+                            <h4>Total: {totalSum} $</h4>
                             <Button
                                 style={{ color: '#fff' }}
                                 variant="contained"

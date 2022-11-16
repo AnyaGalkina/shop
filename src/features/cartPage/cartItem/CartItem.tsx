@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React, { memo, ReactElement } from 'react';
 
 import { Button, Paper } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
@@ -25,7 +25,7 @@ const buttonStyles = {
     fontWeight: '900',
 };
 
-export const CartItem = ({ product }: PropsType): ReactElement => {
+export const CartItem = memo(({ product }: PropsType): ReactElement => {
     const dispatch = useDispatch();
     const { productId, imgSrc, productName, pricePerUnit, quantity }: ProductCartType =
         product;
@@ -68,4 +68,4 @@ export const CartItem = ({ product }: PropsType): ReactElement => {
             </div>
         </Paper>
     );
-};
+});

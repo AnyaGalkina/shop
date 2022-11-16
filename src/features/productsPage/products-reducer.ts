@@ -1,4 +1,5 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import cake1 from '../../common/assets/image/products/cake1.png';
 import cake2 from '../../common/assets/image/products/cake2.png';
@@ -6,6 +7,8 @@ import cake3 from '../../common/assets/image/products/cake3.png';
 import cake4 from '../../common/assets/image/products/cake4.png';
 import cake5 from '../../common/assets/image/products/cake5.jpg';
 import cake7 from '../../common/assets/image/products/cake7.jpg';
+
+// import { productsPageAPI, productsPageAPI } from './api-productsPage';
 
 const imgSrcs = [cake1, cake2, cake3, cake4, cake5, cake7];
 // eslint-disable-next-line
@@ -30,6 +33,7 @@ const productsArray: ProductType[] = new Array(6).fill(null).map((_, index) => (
 }));
 
 export const initialState = {
+    // products: [] as Array<ProductType>,
     products: [...productsArray] as Array<ProductType>,
 };
 
@@ -40,6 +44,24 @@ export type ProductType = {
     productDescription: string;
     pricePerUnit: number;
 };
+
+// export const getProductsTC = createAsyncThunk(
+//     'productsPage/setProducts',
+//     async (param: {}, { dispatch }) => {
+//         //     // dispatch(setAppStatus({status: "loading"}))
+//         try {
+//             const response = await productsPageAPI.getProducts();
+//
+//             // console.log(response.data.products);
+//             dispatch(setProducts({ products: response.data.products }));
+//         } catch (error) {
+//             //         // handleServerNetworkError(error, dispatch);
+//             //         return rejectWithValue(null);
+//         } finally {
+//             //         // dispatch(setAppStatus({status: "idle"}));
+//         }
+//     },
+// );
 
 const slice = createSlice({
     name: 'productsPage',

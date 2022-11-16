@@ -6,7 +6,7 @@ import { action } from '@storybook/addon-actions';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { ReduxStoreProviderDecorator } from '../../../app/ReduxStoreProviderDecorator';
-import placeholder from '../../../common/assets/image/placeholder.png';
+import cakeImg from '../../../common/assets/image/products/cake6.png';
 import { ProductCartType } from '../cart-reducer';
 
 import { CartItem } from './CartItem';
@@ -30,8 +30,8 @@ const baseArgs = {
 const Template: ComponentStory<typeof CartItem> = args => <CartItem {...args} />;
 
 const productCart: ProductCartType = {
-    productId: '1',
-    imgSrc: placeholder,
+    productId: '41',
+    imgSrc: cakeImg,
     productName: 'Best Product',
     quantity: 5,
     pricePerUnit: 70,

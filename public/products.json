@@ -37,7 +37,7 @@
     },
     {
       "productId": "5",
-      "imgSrc": "/shop/static/media/cake7.de2d31271363eeb1e626.jpg",
+      "imgSrc": "https://anyagalkina.github.io/shop/static/media/cake7.de2d31271363eeb1e626.jpg",
       "pricePerUnit": 120,
       "productName": "ASSORTMENT CAKES",
       "productDescription": "Sed non mauris vitae erat consequat auctor. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin nec sagitis sem nibh id elit vulputate cursus a sit amet mauris."

@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React, { memo, ReactElement } from 'react';
 
 import { Button, Paper, TextField } from '@material-ui/core';
 import { useFormik } from 'formik';
@@ -27,7 +27,8 @@ export const FormSchema = Yup.object().shape({
     phone: Yup.string().phone('IN').required('A phone number is required'),
 });
 
-export const ContactDetails = (): ReactElement => {
+export const ContactDetails = memo((): ReactElement => {
+    console.log('ContactDetails');
     const dispatch = useDispatch();
 
     const formik = useFormik({
@@ -89,4 +90,4 @@ export const ContactDetails = (): ReactElement => {
             </form>
         </Paper>
     );
-};
+});
