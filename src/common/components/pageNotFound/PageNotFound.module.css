@@ -6,3 +6,6 @@
     text-align: center;
     margin: 2%;
 }
+.notFoundContainer{
+    min-height: 100vh;
+}

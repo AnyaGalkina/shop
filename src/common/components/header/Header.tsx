@@ -2,12 +2,10 @@ import React, { ReactElement } from 'react';
 
 import { AppBar, Box, Toolbar, Paper, IconButton } from '@material-ui/core';
 import { ShoppingBasketSharp } from '@material-ui/icons';
-import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-import { AppStateType } from '../../../app/store';
-import { ProductCartType } from '../../../features/cartPage/cart-reducer';
-import { ROUTES } from '../../enums';
+import { PATH } from '../../enums';
+import { useAppSelector } from '../../hooks';
 
 const paperStyles = {
     height: '30px',
@@ -26,23 +24,12 @@ const toolbarStyles = {
     color: '#c29f79',
 };
 
-// type PropsType = {
-//     demo?: boolean;
-// };
-
 export const Header = (): ReactElement => {
-    // if (!demo) {
     const navigate = useNavigate();
-    // }
-    const productsCartList = useSelector<AppStateType, Array<ProductCartType>>(
-        state => state.cartPage.productsCartList,
-    );
-    const totalSum = useSelector<AppStateType, number>(state => state.cartPage.totalSum);
+    const totalSum = useAppSelector(state => state.cartPage.totalSum);
 
     const onCartClickHandler = (): void => {
-        // if (!demo) {
-        navigate(ROUTES.CART_PAGE);
-        // }
+        navigate(PATH.CART_PAGE);
     };
 
     return (
@@ -53,7 +40,7 @@ export const Header = (): ReactElement => {
                         // @ts-ignore
                         style={paperStyles}
                     >
-                        {productsCartList.length ? totalSum : ''}
+                        {totalSum || ''}
                     </Paper>
                     <IconButton color="inherit" onClick={onCartClickHandler}>
                         <ShoppingBasketSharp />
