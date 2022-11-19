@@ -1,16 +1,18 @@
-import React, { memo, ReactElement } from 'react';
+import React, { memo, ReactElement, useState } from 'react';
 
-import { Button, Paper, TextField } from '@material-ui/core';
+import { Button, Paper } from '@material-ui/core';
 import { useFormik } from 'formik';
-import { useDispatch } from 'react-redux';
 import * as Yup from 'yup';
 import 'yup-phone';
 
-import { addContactDetails } from '../cart-reducer';
+import { useAppDispatch, useAppSelector } from '../../../common';
+import { ContactDetailsType, createOrder } from '../cart-reducer';
 
 import styles from './ContactDetails.module.css';
+import { OrderInput } from './orderInput/OrderInput';
 
-const textFieldStyles = { marginBottom: '10px', width: '280px' };
+import { Modal } from 'common/components';
+
 const MAX_NAME_LENGTH = 128;
 const MAX_ADDRESS_LENGTH = 500;
 
@@ -27,11 +29,18 @@ export const FormSchema = Yup.object().shape({
     phone: Yup.string().phone('IN').required('A phone number is required'),
 });
 
-export const ContactDetails = memo((): ReactElement => {
-    console.log('ContactDetails');
-    const dispatch = useDispatch();
+type PropsType = {
+    disabled: boolean;
+};
 
-    const formik = useFormik({
+export const ContactDetails = memo(({ disabled }: PropsType): ReactElement => {
+    const dispatch = useAppDispatch();
+
+    const appError = useAppSelector(state => state.app.appError);
+
+    const [open, setOpen] = useState(false);
+
+    const formik = useFormik<ContactDetailsType>({
         initialValues: {
             firstName: '',
             surname: '',
@@ -39,11 +48,16 @@ export const ContactDetails = memo((): ReactElement => {
             phone: '',
         },
         validationSchema: FormSchema,
-        onSubmit: (values): void => {
-            dispatch(addContactDetails(values));
-            formik.resetForm();
+        onSubmit: (values, { resetForm }): void => {
+            dispatch(createOrder(values));
+            if (appError === null) {
+                setOpen(true);
+            }
+            resetForm();
         },
     });
+
+    const { errors, touched, getFieldProps, handleSubmit } = formik;
 
     return (
         <Paper
@@ -51,43 +65,46 @@ export const ContactDetails = memo((): ReactElement => {
             style={{ width: '330px', display: 'flex', flexDirection: 'column' }}
         >
             <h3 className={styles.formHeader}>Add order details:</h3>
-            <form onSubmit={formik.handleSubmit} className={styles.orderDetailsForm}>
-                <TextField
-                    style={textFieldStyles}
-                    label="First name"
-                    {...formik.getFieldProps('firstName')}
+            <form onSubmit={handleSubmit} className={styles.orderDetailsForm}>
+                <OrderInput
+                    placeholder="First name"
+                    value="firstName"
+                    isTouched={touched.firstName}
+                    errorMessage={errors.firstName}
+                    getFieldProps={getFieldProps}
                 />
-                {formik.touched.firstName && formik.errors.firstName && (
-                    <div className={styles.error}>{formik.errors.firstName}</div>
-                )}
-                <TextField
-                    style={textFieldStyles}
-                    label="Surname"
-                    {...formik.getFieldProps('surname')}
+                <OrderInput
+                    placeholder="Surname"
+                    value="surname"
+                    isTouched={touched.surname}
+                    errorMessage={errors.surname}
+                    getFieldProps={getFieldProps}
                 />
-                {formik.touched.surname && formik.errors.surname && (
-                    <div className={styles.error}>{formik.errors.surname}</div>
-                )}
-                <TextField
-                    style={textFieldStyles}
-                    label="Address"
-                    {...formik.getFieldProps('address')}
+                <OrderInput
+                    placeholder="Address"
+                    value="address"
+                    isTouched={touched.address}
+                    errorMessage={errors.address}
+                    getFieldProps={getFieldProps}
                 />
-                {formik.touched.address && formik.errors.address && (
-                    <div className={styles.error}>{formik.errors.address}</div>
-                )}
-                <TextField
-                    style={textFieldStyles}
-                    label="Phone"
-                    {...formik.getFieldProps('phone')}
+                <OrderInput
+                    placeholder="Phone"
+                    value="phone"
+                    isTouched={touched.phone}
+                    errorMessage={errors.phone}
+                    getFieldProps={getFieldProps}
                 />
-                {formik.touched.phone && formik.errors.phone && (
-                    <div className={styles.error}>{formik.errors.phone}</div>
-                )}
-                <Button variant="contained" style={{ color: '#fff' }} type="submit">
+                <Button
+                    disabled={disabled}
+                    variant="contained"
+                    style={{ color: '#fff' }}
+                    type="submit"
+                >
                     Order
                 </Button>
             </form>
+
+            <Modal setOpen={setOpen} open={open} />
         </Paper>
     );
 });

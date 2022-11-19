@@ -26,7 +26,11 @@ export default {
     },
 } as ComponentMeta<typeof ContactDetails>;
 
-const Template: ComponentStory<typeof ContactDetails> = () => <ContactDetails />;
+const Template: ComponentStory<typeof ContactDetails> = args => (
+    <ContactDetails {...args} />
+);
 
 export const ContactDetailsBaseExample = Template.bind({});
-ContactDetailsBaseExample.args = {};
+ContactDetailsBaseExample.args = {
+    disabled: false,
+};
