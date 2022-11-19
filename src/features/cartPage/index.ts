@@ -6,3 +6,4 @@ export {
     decreaseQuantity,
     increaseQuantity,
 } from './cart-reducer';
+export { cartPageAPI } from './api-cartPage';

@@ -1,18 +1,10 @@
-import axios from 'axios';
+import { instance } from '../../api';
+import { PATH } from '../../common';
 
 import { ProductType } from './products-reducer';
 
-export const instance = axios.create({
-    // baseURL: "https://anyagalkina.github.io/shop"
-    baseURL: './',
-});
-
 export const productsPageAPI = {
     getProducts() {
-        return instance.get<ProductsType>('/products.json');
+        return instance.get<Array<ProductType>>(PATH.GET_PRODUCTS);
     },
-};
-
-type ProductsType = {
-    products: Array<ProductType>;
 };
