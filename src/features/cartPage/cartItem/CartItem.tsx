@@ -1,8 +1,8 @@
 import React, { memo, ReactElement } from 'react';
 
 import { Button, Paper } from '@material-ui/core';
-import { useDispatch } from 'react-redux';
 
+import { useAppDispatch } from '../../../common';
 import {
     decreaseQuantity,
     deleteProductFromCart,
@@ -14,6 +14,7 @@ import styles from './CartItem.module.css';
 
 type PropsType = {
     product: ProductCartType;
+    disabled: boolean;
 };
 
 const buttonStyles = {
@@ -25,8 +26,9 @@ const buttonStyles = {
     fontWeight: '900',
 };
 
-export const CartItem = memo(({ product }: PropsType): ReactElement => {
-    const dispatch = useDispatch();
+export const CartItem = memo(({ product, disabled }: PropsType): ReactElement => {
+    const dispatch = useAppDispatch();
+
     const { productId, imgSrc, productName, pricePerUnit, quantity }: ProductCartType =
         product;
 
@@ -49,6 +51,7 @@ export const CartItem = memo(({ product }: PropsType): ReactElement => {
                 <div className={styles.itemQuantityContainer}>{productName}</div>
                 <div className={styles.itemQuantityContainer}>
                     <Button
+                        disabled={disabled}
                         variant="contained"
                         onClick={onDecreaseItemClickHandler}
                         style={buttonStyles}
@@ -60,6 +63,7 @@ export const CartItem = memo(({ product }: PropsType): ReactElement => {
                         variant="contained"
                         onClick={onIncreaseQuantityClickHandler}
                         style={buttonStyles}
+                        disabled={pricePerUnit === 0 || disabled}
                     >
                         +
                     </Button>

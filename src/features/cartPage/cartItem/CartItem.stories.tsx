@@ -20,8 +20,6 @@ export default {
     },
 } as ComponentMeta<typeof CartItem>;
 
-// const onAddItemClickHandler = action()
-
 const baseArgs = {
     onAddItemClickHandler: action('one more item added'),
     onDeleteItemClickHandler: action('one more item added'),

@@ -1,23 +1,16 @@
 import React from 'react';
 
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { action } from '@storybook/addon-actions';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import { ReduxStoreProviderDecorator } from '../../../app/ReduxStoreProviderDecorator';
-import placeholder from '../../../common/assets/image/placeholder.png';
+import placeholder from '../../../common/assets/image/cake6.png';
 import { ProductType } from '../products-reducer';
 
 import { ProductItem } from './ProductItem';
 
 export default {
-    title: 'Shop/Product_Page/ProductItem_Component',
+    title: 'Example/Product_Page/ProductItem_Component',
     component: ProductItem,
-    decorators: [ReduxStoreProviderDecorator],
-    args: {
-        addItem: action("Button 'add to cart' was pressed"),
-    },
 } as ComponentMeta<typeof ProductItem>;
 
 const Template: ComponentStory<typeof ProductItem> = args => <ProductItem {...args} />;
@@ -34,6 +27,5 @@ const product: ProductType = {
 
 ProductItemBaseExample.args = {
     product,
-    // @ts-ignore
-    addItem: action("Button 'add to cart' was pressed"),
+    disabled: false,
 };

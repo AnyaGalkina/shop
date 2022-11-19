@@ -1,26 +1,26 @@
 import React, { ReactElement } from 'react';
 
 import { Button } from '@material-ui/core';
-import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-import { AppStateType } from '../../app/store';
-import { ROUTES } from '../../common';
+import { PATH, useAppSelector } from '../../common';
 
-import { ProductCartType } from './cart-reducer';
 import { CartItem } from './cartItem';
 import styles from './CartPage.module.css';
 import { ContactDetails } from './contactDetails';
 
 export const CartPage = (): ReactElement => {
     const navigate = useNavigate();
-    const productsAtCart = useSelector<AppStateType, Array<ProductCartType>>(
-        state => state.cartPage.productsCartList,
-    );
-    const totalSum = useSelector<AppStateType, number>(state => state.cartPage.totalSum);
+
+    const totalSum = useAppSelector(state => state.cartPage.totalSum);
+    const appStatus = useAppSelector(state => state.app.appStatus);
+    const productsAtCart = useAppSelector(state => state.cartPage.productsCartList);
+
+    const disabled = appStatus === 'loading';
+    const disabledOrderClick = disabled || totalSum === 0;
 
     const onStartShoppingClickHandler = (): void => {
-        navigate(ROUTES.PRODUCT_PAGE);
+        navigate(PATH.PRODUCT_PAGE);
     };
 
     return (
@@ -28,12 +28,20 @@ export const CartPage = (): ReactElement => {
             <div>
                 {productsAtCart.length ? (
                     <div>
-                        {productsAtCart.map(p => {
-                            return <CartItem key={p.productId} product={p} />;
+                        {productsAtCart.map(product => {
+                            return (
+                                <CartItem
+                                    key={product.productId}
+                                    product={product}
+                                    disabled={disabled}
+                                />
+                            );
                         })}
+
                         <div className={styles.totalSumBlock}>
                             <h4>Total: {totalSum} $</h4>
                             <Button
+                                disabled={disabled}
                                 style={{ color: '#fff' }}
                                 variant="contained"
                                 onClick={onStartShoppingClickHandler}
@@ -46,6 +54,7 @@ export const CartPage = (): ReactElement => {
                     <div className={styles.totalSumBlock}>
                         <h4>The cart is empty</h4>
                         <Button
+                            disabled={disabled}
                             style={{ color: '#fff' }}
                             variant="contained"
                             onClick={onStartShoppingClickHandler}
@@ -55,7 +64,8 @@ export const CartPage = (): ReactElement => {
                     </div>
                 )}
             </div>
-            <ContactDetails />
+
+            <ContactDetails disabled={disabledOrderClick} />
         </div>
     );
 };

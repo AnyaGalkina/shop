@@ -1,7 +1,10 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 
+import { AppStateType, setAppError, setAppStatus } from '../../app';
 import cake6 from '../../common/assets/image/cake6.png';
 import { ProductType } from '../productsPage/products-reducer';
+
+import { cartPageAPI } from './api-cartPage';
 
 const initialState = {
     productsCartList: [
@@ -22,26 +25,38 @@ const initialState = {
     totalSum: 0,
 };
 
-export type InitialStateCartType = {
-    productsCartList: Array<ProductCartType>;
-    contactDetails: ContactDetailsType;
-    totalSum: number;
-};
+export const createOrder = createAsyncThunk(
+    'cartPage/createOrder',
+    async (
+        param: {
+            firstName: string;
+            surname: string;
+            address: string;
+            phone: string;
+        },
+        { dispatch, rejectWithValue, getState },
+    ) => {
+        dispatch(setAppStatus({ appStatus: 'loading' }));
+        const state = getState() as AppStateType;
+        const { productsCartList, totalSum } = state.cartPage;
 
-export type ContactDetailsType = {
-    firstName: string;
-    surname: string;
-    address: string;
-    phone: string;
-};
+        try {
+            /*eslint-disable */
+            const response = await cartPageAPI.createOrder({
+                contactDetails: { ...param },
+                totalSum,
+                productsCartList,
+            });
+            /* eslint-enable */
+        } catch (error: any) {
+            dispatch(setAppError({ appError: 'Some error occurred' }));
 
-export type ProductCartType = {
-    productId: string;
-    imgSrc: string;
-    productName: string;
-    quantity: number;
-    pricePerUnit: number;
-};
+            return rejectWithValue(null);
+        } finally {
+            dispatch(setAppStatus({ appStatus: 'idle' }));
+        }
+    },
+);
 
 const findIndexInProductCartArray = (id: string, arr: Array<ProductCartType>): number => {
     return arr.findIndex(product => product.productId === id);
@@ -112,3 +127,24 @@ export const {
     increaseQuantity,
     addContactDetails,
 } = slice.actions;
+
+export type InitialStateCartType = {
+    productsCartList: Array<ProductCartType>;
+    contactDetails: ContactDetailsType;
+    totalSum: number;
+};
+
+export type ContactDetailsType = {
+    firstName: string;
+    surname: string;
+    address: string;
+    phone: string;
+};
+
+export type ProductCartType = {
+    productId: string;
+    imgSrc: string;
+    productName: string;
+    quantity: number;
+    pricePerUnit: number;
+};

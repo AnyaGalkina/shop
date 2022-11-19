@@ -1,7 +1,8 @@
-import React, { ReactElement } from 'react';
+import React from 'react';
 
+import { configureStore } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
-import { applyMiddleware, combineReducers, createStore } from 'redux';
+import { combineReducers } from 'redux';
 import thunk from 'redux-thunk';
 
 import cakeImg from '../../public/products/cake7.jpg';
@@ -15,7 +16,7 @@ const rootReducer = combineReducers({
     cartPage: cartReducer,
 });
 
-const initialGlobalState = {
+const initialGlobalState: AppStateType = {
     productsPage: {
         products: [
             {
@@ -32,22 +33,32 @@ const initialGlobalState = {
         productsCartList: [
             {
                 productId: '42',
-                imgSrc: '',
+                imgSrc: cakeImg,
                 productName: 'CAKE',
                 quantity: 2,
                 pricePerUnit: 200,
             },
         ] as Array<ProductCartType>,
+        contactDetails: {
+            firstName: '',
+            surname: '',
+            address: '',
+            phone: '',
+        },
         totalSum: 200,
+    },
+    app: {
+        appStatus: 'idle',
+        appError: null,
     },
 };
 
-export const storyBookStore = createStore(
-    rootReducer,
-    initialGlobalState as AppStateType,
-    applyMiddleware(thunk),
-);
+export const storyBookStore = configureStore({
+    reducer: rootReducer,
+    middleware: getDefaultMiddleware => getDefaultMiddleware().prepend(thunk),
+    preloadedState: initialGlobalState,
+});
 
-export const ReduxStoreProviderDecorator = (storyFn: any): ReactElement => (
+export const ReduxStoreProviderDecorator = (storyFn: any): any => (
     <Provider store={storyBookStore}>{storyFn()}</Provider>
 );

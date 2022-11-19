@@ -1,22 +1,19 @@
 import React, { ReactElement, useEffect } from 'react';
 
-import { useSelector } from 'react-redux';
-
-import { AppStateType } from '../../app/store';
-import { useAppDispatch } from '../../common';
+import { useAppDispatch, useAppSelector } from '../../common';
 
 import { ProductItem } from './productItem';
-import { getProductsTC, ProductType } from './products-reducer';
+import { getProducts } from './products-reducer';
 import styles from './ProductsPage.module.css';
 
 export const ProductsPage = (): ReactElement => {
     const dispatch = useAppDispatch();
-    const products = useSelector<AppStateType, Array<ProductType>>(
-        state => state.productsPage.products,
-    );
+
+    const products = useAppSelector(state => state.productsPage.products);
+    const appStatus = useAppSelector(state => state.app.appStatus);
 
     useEffect(() => {
-        dispatch(getProductsTC({}));
+        dispatch(getProducts({}));
     }, [dispatch]);
 
     return (
@@ -25,7 +22,11 @@ export const ProductsPage = (): ReactElement => {
             <div className={styles.productsContainer}>
                 {products.map(
                     (product): ReactElement => (
-                        <ProductItem key={product.productId} product={product} />
+                        <ProductItem
+                            key={product.productId}
+                            product={product}
+                            disabled={appStatus === 'loading'}
+                        />
                     ),
                 )}
             </div>
