@@ -1,0 +1,52 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# production
+/build
+
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# .idea
+.idea
+
+#.env
+.env
+.env.example
+/src/stories/
+
+/.idea
+.git
+README.md
+.gitignore
+Dockerfile
+
+.eslintrc.json
+.eslintrcignore
+.prettierrc
+.storybook
+integration
+
+
+src/features/productsPage/productItem/ProductItem.stories.tsx
+src/features/cartPage/cartItem/CartItem.stories.tsx
+
+src/features/cartPage/contactDetails/ContactDetails.stories.tsx
+src/app/ReduxStoreProviderDecorator.tsx
+src/common/components/header/Header.stories.tsx
+
