@@ -1,7 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { AppStateType, setAppError, setAppStatus } from '../../app';
-import cake6 from '../../common/assets/image/cake6.png';
 import { ProductType } from '../productsPage/products-reducer';
 
 import { cartPageAPI } from './api-cartPage';
@@ -10,7 +9,7 @@ const initialState = {
     productsCartList: [
         {
             productId: '42',
-            imgSrc: cake6,
+            imgSrc: 'https://anyagalkina.github.io/shop/products/cake3.png',
             productName: 'Free gift',
             quantity: 1,
             pricePerUnit: 0,
