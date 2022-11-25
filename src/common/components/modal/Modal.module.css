@@ -1,5 +1,4 @@
-.icons{
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
+.img {
+   width: 250px;
+   margin: 40px 40px 0 40px;
 }
