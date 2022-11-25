@@ -4,6 +4,12 @@
 
 Mobile responsive App. Online shop where you can order cakes and other sweets.
 
+![Project screenshot](/src/common/assets/image/shop1.png)
+
+![Project screenshot](/src/common/assets/image/shop2.png)
+
+![Project screenshot](/src/common/assets/image/shop3.png)
+
 ## Available Scripts
 
 In the project directory, you can run:
@@ -13,9 +19,6 @@ In the project directory, you can run:
 Install modules.
 
 ### `yarn start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ## Technologies Used:
 - Type script
