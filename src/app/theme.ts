@@ -13,7 +13,6 @@ export const theme = createTheme({
         },
         background: {
             default: '#eceae8',
-            // paper: '#eceae8',
         },
     },
 });

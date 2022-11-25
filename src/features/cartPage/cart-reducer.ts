@@ -9,7 +9,7 @@ const initialState = {
     productsCartList: [
         {
             productId: '42',
-            imgSrc: 'https://anyagalkina.github.io/shop/products/cake3.png',
+            imgSrc: 'https://anyagalkina.github.io/shop/products/cake6.png',
             productName: 'Free gift',
             quantity: 1,
             pricePerUnit: 0,
