@@ -3,5 +3,4 @@ export enum PATH {
     CART_PAGE = '/cart',
     PAGE_NOT_FOUND = '/404',
     GET_PRODUCTS = '/products',
-    // GET_PRODUCTS = '/products.json',
 }
