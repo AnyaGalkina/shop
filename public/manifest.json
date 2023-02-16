@@ -1,9 +1,21 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
-  "icons": [],
+  "short_name": "Cakes",
+  "name": "Cakes Online",
+  "icons": [
+    {
+      "src": "cupcake192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "cupcake.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
   "start_url": ".",
+  "orientation": "portrait",
   "display": "standalone",
-  "theme_color": "#000000",
+  "theme_color": "#ffffff",
   "background_color": "#ffffff"
 }
