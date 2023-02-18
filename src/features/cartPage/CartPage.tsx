@@ -39,7 +39,7 @@ export const CartPage = (): ReactElement => {
                         })}
 
                         <div className={styles.totalSumBlock}>
-                            <h4>Total: {totalSum} $</h4>
+                            <h2>Total: {totalSum} $</h2>
                             <Button
                                 disabled={disabled}
                                 style={{ color: '#fff' }}
@@ -52,7 +52,7 @@ export const CartPage = (): ReactElement => {
                     </div>
                 ) : (
                     <div className={styles.totalSumBlock}>
-                        <h4>The cart is empty</h4>
+                        <h2>The cart is empty</h2>
                         <Button
                             disabled={disabled}
                             style={{ color: '#fff' }}

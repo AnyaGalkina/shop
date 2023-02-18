@@ -28,6 +28,7 @@ export const OrderInput = ({
             <TextField
                 style={textFieldStyles}
                 label={placeholder}
+                aria-label={placeholder}
                 {...getFieldProps(value)}
             />
             <ErrorMessage errorMessage={errorMessage} isTouched={isTouched} />

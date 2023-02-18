@@ -53,7 +53,11 @@ export const Header = (): ReactElement => {
                         >
                             {totalSum || ''}
                         </Paper>
-                        <IconButton color="inherit" onClick={onCartClickHandler}>
+                        <IconButton
+                            aria-label="cart"
+                            color="inherit"
+                            onClick={onCartClickHandler}
+                        >
                             <ShoppingBasketSharp />
                         </IconButton>
                     </div>
