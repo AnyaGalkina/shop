@@ -1,0 +1,20 @@
+.searchContainer{
+    /*position: relative;*/
+    display: flex;
+    justify-content: start;
+    flex-wrap: wrap;
+    width: 350px;
+    height: 40px;
+    margin: 30px;
+}
+
+.searchInput {
+    /*position: absolute;*/
+    width: 300px;
+    height: 40px;
+    font-size: 16px;
+    border-radius: 3px;
+    border-color: #c29f79;
+    margin-right: 2px;
+}
+
