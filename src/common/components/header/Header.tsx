@@ -4,8 +4,9 @@ import { AppBar, Box, Toolbar, Paper, IconButton } from '@material-ui/core';
 import { ShoppingBasketSharp } from '@material-ui/icons';
 import { useNavigate } from 'react-router-dom';
 
+import { setSearchParam } from '../../../features/productsPage';
 import { PATH } from '../../enums';
-import { useAppSelector } from '../../hooks';
+import { useAppDispatch, useAppSelector } from '../../hooks';
 
 import styles from './Header.module.css';
 
@@ -28,10 +29,13 @@ const toolbarStyles = {
 };
 
 export const Header = (): ReactElement => {
+    const dispatch = useAppDispatch();
     const navigate = useNavigate();
+
     const totalSum = useAppSelector(state => state.cartPage.totalSum);
 
     const onTitleClick = (): void => {
+        dispatch(setSearchParam({ productName: '' }));
         navigate(PATH.PRODUCT_PAGE);
     };
     const onCartClickHandler = (): void => {

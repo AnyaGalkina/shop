@@ -3,7 +3,8 @@ import React, { ReactElement } from 'react';
 import { Button } from '@material-ui/core';
 import { useNavigate } from 'react-router-dom';
 
-import { PATH, useAppSelector } from '../../common';
+import { PATH, useAppDispatch, useAppSelector } from '../../common';
+import { setSearchParam } from '../productsPage';
 
 import { CartItem } from './cartItem';
 import styles from './CartPage.module.css';
@@ -11,6 +12,7 @@ import { ContactDetails } from './contactDetails';
 
 export const CartPage = (): ReactElement => {
     const navigate = useNavigate();
+    const dispatch = useAppDispatch();
 
     const totalSum = useAppSelector(state => state.cartPage.totalSum);
     const appStatus = useAppSelector(state => state.app.appStatus);
@@ -20,6 +22,7 @@ export const CartPage = (): ReactElement => {
     const disabledOrderClick = disabled || totalSum === 0;
 
     const onStartShoppingClickHandler = (): void => {
+        dispatch(setSearchParam({ productName: '' }));
         navigate(PATH.PRODUCT_PAGE);
     };
 

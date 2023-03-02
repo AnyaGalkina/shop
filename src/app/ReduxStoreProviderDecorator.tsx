@@ -28,6 +28,7 @@ const initialGlobalState: AppStateType = {
                 pricePerUnit: 50,
             },
         ],
+        search: '',
     },
     cartPage: {
         productsCartList: [
@@ -44,6 +45,7 @@ const initialGlobalState: AppStateType = {
             surname: '',
             address: '',
             phone: '',
+            email: '',
         },
         totalSum: 200,
     },

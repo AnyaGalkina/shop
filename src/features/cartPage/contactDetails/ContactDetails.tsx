@@ -13,19 +13,24 @@ import { OrderInput } from './orderInput/OrderInput';
 
 import { Modal } from 'common/components';
 
-const MAX_NAME_LENGTH = 128;
+const MIN_NAME_LENGTH = 1;
+const MAX_NAME_LENGTH = 100;
 const MAX_ADDRESS_LENGTH = 500;
 
 export const FormSchema = Yup.object().shape({
     firstName: Yup.string()
+        .min(MIN_NAME_LENGTH, `Minimum ${MIN_NAME_LENGTH} symbol`)
         .max(MAX_NAME_LENGTH, `Maximum ${MAX_NAME_LENGTH} symbol.`)
         .required('Field is required'),
     surname: Yup.string()
+        .min(MIN_NAME_LENGTH, `Minimum ${MIN_NAME_LENGTH} symbol`)
         .max(MAX_NAME_LENGTH, `Maximum ${MAX_NAME_LENGTH} symbol.`)
         .required('Field is required'),
     address: Yup.string()
+        .min(MIN_NAME_LENGTH, `Minimum ${MIN_NAME_LENGTH} symbol`)
         .max(MAX_ADDRESS_LENGTH, `Maximum ${MAX_ADDRESS_LENGTH} symbol.`)
         .required('Field is required'),
+    email: Yup.string().email().required('Field is required'),
     phone: Yup.string().phone('IN').required('A phone number is required'),
 });
 
@@ -45,12 +50,13 @@ export const ContactDetails = memo(({ disabled }: PropsType): ReactElement => {
             firstName: '',
             surname: '',
             address: '',
+            email: '',
             phone: '',
         },
         validationSchema: FormSchema,
         onSubmit: (values, { resetForm }): void => {
             dispatch(createOrder(values));
-            if (appError === null) {
+            if (!appError) {
                 setOpen(true);
             }
             resetForm();
@@ -85,6 +91,13 @@ export const ContactDetails = memo(({ disabled }: PropsType): ReactElement => {
                     value="address"
                     isTouched={touched.address}
                     errorMessage={errors.address}
+                    getFieldProps={getFieldProps}
+                />
+                <OrderInput
+                    placeholder="Email"
+                    value="email"
+                    isTouched={touched.email}
+                    errorMessage={errors.email}
                     getFieldProps={getFieldProps}
                 />
                 <OrderInput

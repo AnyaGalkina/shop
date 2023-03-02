@@ -1,7 +1,7 @@
 import React, { memo, ReactElement } from 'react';
 
 // eslint-disable-next-line import/no-unresolved
-import { Slide, Button, Dialog, DialogActions, DialogTitle } from '@material-ui/core';
+import { Button, Dialog, DialogActions, DialogTitle, Slide } from '@material-ui/core';
 import { TransitionProps } from '@material-ui/core/transitions';
 
 import ordered from '../../assets/image/ordered.png';
@@ -39,7 +39,7 @@ export const Modal = memo(({ setOpen, open }: PropsType): ReactElement => {
             >
                 <img className={styles.img} alt="order" src={ordered} />
                 <DialogTitle style={{ textAlign: 'center' }}>
-                    Your order has been sent
+                    Your order has been sent to your email
                 </DialogTitle>
 
                 <DialogActions>

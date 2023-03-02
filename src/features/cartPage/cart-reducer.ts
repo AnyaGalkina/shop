@@ -5,20 +5,21 @@ import { ProductType } from '../productsPage/products-reducer';
 
 import { cartPageAPI } from './api-cartPage';
 
+const freeGiftProduct: ProductCartType = {
+    productId: '42',
+    imgSrc: 'https://anyagalkina.github.io/shop/products/cake6.png',
+    productName: 'Free gift',
+    quantity: 1,
+    pricePerUnit: 0,
+};
+
 const initialState = {
-    productsCartList: [
-        {
-            productId: '42',
-            imgSrc: 'https://anyagalkina.github.io/shop/products/cake6.png',
-            productName: 'Free gift',
-            quantity: 1,
-            pricePerUnit: 0,
-        },
-    ] as Array<ProductCartType>,
+    productsCartList: [freeGiftProduct] as Array<ProductCartType>,
     contactDetails: {
         firstName: '',
         surname: '',
         address: '',
+        email: '',
         phone: '',
     } as ContactDetailsType,
     totalSum: 0,
@@ -32,6 +33,7 @@ export const createOrder = createAsyncThunk(
             surname: string;
             address: string;
             phone: string;
+            email: string;
         },
         { dispatch, rejectWithValue, getState },
     ) => {
@@ -46,8 +48,13 @@ export const createOrder = createAsyncThunk(
                 totalSum,
                 productsCartList,
             });
+
             /* eslint-enable */
+            dispatch(setProductsCartList({ product: freeGiftProduct }));
         } catch (error: any) {
+            if (error.message) {
+                dispatch(setAppError({ appError: error.msg }));
+            }
             dispatch(setAppError({ appError: 'Some error occurred' }));
 
             return rejectWithValue(null);
@@ -67,6 +74,11 @@ const slice = createSlice({
     reducers: {
         addContactDetails(state, action: PayloadAction<ContactDetailsType>) {
             state.contactDetails = action.payload;
+        },
+        setProductsCartList(state, action: PayloadAction<{ product: ProductCartType }>) {
+            state.productsCartList = [];
+            state.productsCartList.push(action.payload.product);
+            state.totalSum = action.payload.product.pricePerUnit;
         },
         addProductToCart(state, action: PayloadAction<{ product: ProductType }>) {
             const index = findIndexInProductCartArray(
@@ -125,6 +137,7 @@ export const {
     addProductToCart,
     increaseQuantity,
     addContactDetails,
+    setProductsCartList,
 } = slice.actions;
 
 export type InitialStateCartType = {
@@ -138,6 +151,7 @@ export type ContactDetailsType = {
     surname: string;
     address: string;
     phone: string;
+    email: string;
 };
 
 export type ProductCartType = {

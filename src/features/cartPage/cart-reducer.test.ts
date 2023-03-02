@@ -25,6 +25,7 @@ beforeEach(() => {
             surname: '',
             address: '',
             phone: '',
+            email: '',
         },
         totalSum: 10,
     };

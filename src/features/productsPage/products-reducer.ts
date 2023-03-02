@@ -1,19 +1,30 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { setAppError, setAppStatus } from '../../app';
+import { AppStateType, setAppError, setAppStatus } from '../../app';
 
 import { productsPageAPI } from './api-productsPage';
 
 export const initialState = {
     products: [] as Array<ProductType>,
+    search: '',
 };
+
+type InitialStateType = typeof initialState;
 
 export const getProducts = createAsyncThunk(
     'productsPage/setProducts',
-    async (param: {}, { dispatch, rejectWithValue }) => {
+    async (_, { dispatch, getState, rejectWithValue }) => {
         dispatch(setAppStatus({ appStatus: 'loading' }));
+        const state = getState() as AppStateType;
+        const { search } = state.productsPage;
+        const params: { productName?: string } = {};
+
+        if (search) {
+            params.productName = search.toUpperCase();
+        }
+
         try {
-            const response = await productsPageAPI.getProducts();
+            const response = await productsPageAPI.getProducts(params);
 
             return { products: response.data };
         } catch (error: any) {
@@ -29,7 +40,14 @@ export const getProducts = createAsyncThunk(
 const slice = createSlice({
     name: 'productsPage',
     initialState,
-    reducers: {},
+    reducers: {
+        setSearchParam(
+            state: InitialStateType,
+            action: PayloadAction<{ productName: string }>,
+        ): void {
+            state.search = action.payload.productName;
+        },
+    },
     extraReducers: builder => {
         builder.addCase(getProducts.fulfilled, (state, action) => {
             state.products = action.payload.products;
@@ -37,6 +55,7 @@ const slice = createSlice({
     },
 });
 
+export const { setSearchParam } = slice.actions;
 export const productsReducer = slice.reducer;
 
 export type ProductType = {

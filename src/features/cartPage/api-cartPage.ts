@@ -6,7 +6,7 @@ import { InitialStateCartType } from './cart-reducer';
 export const cartPageAPI = {
     createOrder({ contactDetails, totalSum, productsCartList }: InitialStateCartType) {
         return instance.post<any>(PATH.CART_PAGE, {
-            contactDetails,
+            ...contactDetails,
             totalSum,
             productsCartList,
         });
