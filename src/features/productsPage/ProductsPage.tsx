@@ -1,7 +1,6 @@
 import React, { ReactElement, useEffect } from 'react';
 
-import { useAppDispatch, useAppSelector } from '../../common';
-import { Search } from '../../common/search/Search';
+import { useAppDispatch, useAppSelector, Search } from '../../common';
 
 import { NotFoundSearchResult } from './notFoundSearchResult/NotFoundSearchResult';
 import { ProductItem } from './productItem';

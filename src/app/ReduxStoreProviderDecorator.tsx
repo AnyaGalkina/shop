@@ -26,6 +26,7 @@ const initialGlobalState: AppStateType = {
                 productDescription:
                     "Whether you've been naughty or nice this year, our limited-edition Model X-mas Sweater will keep you warm all season long. With a festive pattern featuring the S3XY vehicle lineup, Supercharger, lightning bolt silhouette and Tesla wordmark, this hand-linked knit is the perfect addition to any holiday gathering. Made from 100% hypoallergenic acrylic to be extra soft and cozy.",
                 pricePerUnit: 50,
+                isAddedToCart: false,
             },
         ],
         search: '',
