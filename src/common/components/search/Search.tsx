@@ -1,4 +1,4 @@
-import React, { ChangeEvent, ReactElement, useState } from 'react';
+import React, { ChangeEvent, ReactElement, useState, KeyboardEvent } from 'react';
 
 import { IconButton } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
@@ -20,6 +20,13 @@ export const Search = ({ onSearchClickHandler }: PropsType): ReactElement => {
         setSearchValue('');
     };
 
+    const onEnterClick = (event: KeyboardEvent<HTMLInputElement>): void => {
+        if (event.key === 'Enter') {
+            onSearchClickHandler(searchValue);
+            setSearchValue('');
+        }
+    };
+
     return (
         <div className={style.searchContainer}>
             <input
@@ -28,6 +35,7 @@ export const Search = ({ onSearchClickHandler }: PropsType): ReactElement => {
                 placeholder="Search"
                 value={searchValue}
                 onChange={onSearchChange}
+                onKeyDown={onEnterClick}
             />
             <IconButton
                 aria-label="cart"

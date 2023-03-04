@@ -1,4 +1,10 @@
 .notFoundImage {
-    width: 320px;
+    width: 550px;
     text-align: center;
+}
+
+@media screen and(max-width: 720px){
+    .notFoundImage {
+        width: 320px
+    }
 }
