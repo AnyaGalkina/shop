@@ -35,7 +35,7 @@ export const Header = (): ReactElement => {
     const totalSum = useAppSelector(state => state.cartPage.totalSum);
 
     const onTitleClick = (): void => {
-        dispatch(setSearchParam({ productName: '' }));
+        dispatch(setSearchParam({ search: '' }));
         navigate(PATH.PRODUCT_PAGE);
     };
     const onCartClickHandler = (): void => {

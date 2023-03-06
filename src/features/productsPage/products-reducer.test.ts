@@ -17,6 +17,7 @@ test('products was added to state', () => {
             productName: '1',
             productDescription: '',
             pricePerUnit: 80,
+            isAddedToCart: false,
         },
         {
             productId: '2',
@@ -24,6 +25,7 @@ test('products was added to state', () => {
             productName: '2',
             productDescription: '',
             pricePerUnit: 60,
+            isAddedToCart: false,
         },
     ];
 

@@ -1,10 +1,11 @@
 import React, { ReactElement } from 'react';
 
 import { Button, Paper } from '@material-ui/core';
+import TaskAltIcon from '@material-ui/icons/CheckCircle';
 
 import { useAppDispatch } from '../../../common';
 import { addProductToCart } from '../../cartPage';
-import { ProductType } from '../products-reducer';
+import { ProductType, setIsAddedToCart } from '../products-reducer';
 
 import styles from './ProductItem.module.css';
 
@@ -16,10 +17,18 @@ type PropsType = {
 export const ProductItem = ({ product, disabled }: PropsType): ReactElement => {
     const dispatch = useAppDispatch();
 
-    const { imgSrc, productDescription, productName, pricePerUnit } = product;
+    const {
+        imgSrc,
+        productDescription,
+        productName,
+        pricePerUnit,
+        isAddedToCart,
+        productId,
+    } = product;
 
     const onAddToCardClickHandler = (): void => {
         dispatch(addProductToCart({ product }));
+        dispatch(setIsAddedToCart({ productId, isAddedToCart: true }));
     };
 
     return (
@@ -37,7 +46,14 @@ export const ProductItem = ({ product, disabled }: PropsType): ReactElement => {
                     style={{ width: '320px', color: '#fff' }}
                     onClick={onAddToCardClickHandler}
                 >
-                    Add to Cart
+                    {!isAddedToCart ? (
+                        <span>Add to Cart</span>
+                    ) : (
+                        <>
+                            <span style={{ marginRight: '5px' }}>Added to cart</span>{' '}
+                            <TaskAltIcon />
+                        </>
+                    )}
                 </Button>
             </div>
         </Paper>

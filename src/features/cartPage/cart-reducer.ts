@@ -80,7 +80,10 @@ const slice = createSlice({
             state.productsCartList.push(action.payload.product);
             state.totalSum = action.payload.product.pricePerUnit;
         },
-        addProductToCart(state, action: PayloadAction<{ product: ProductType }>) {
+        addProductToCart(
+            state,
+            action: PayloadAction<{ product: Omit<ProductType, 'isAddedToCart'> }>,
+        ) {
             const index = findIndexInProductCartArray(
                 action.payload.product.productId,
                 state.productsCartList,

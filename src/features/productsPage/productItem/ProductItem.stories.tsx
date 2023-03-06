@@ -23,6 +23,7 @@ const product: ProductType = {
     productId: '8',
     productName: 'PRODUCT',
     pricePerUnit: 85,
+    isAddedToCart: true,
 };
 
 ProductItemBaseExample.args = {

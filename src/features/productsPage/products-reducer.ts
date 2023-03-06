@@ -41,12 +41,27 @@ const slice = createSlice({
     name: 'productsPage',
     initialState,
     reducers: {
+        setIsAddedToCart(
+            state: InitialStateType,
+            action: PayloadAction<{ productId: string; isAddedToCart: boolean }>,
+        ): void {
+            const index = state.products.findIndex(
+                product => product.productId === action.payload.productId,
+            );
+
+            if (index > -1) {
+                state.products[index].isAddedToCart = action.payload.isAddedToCart;
+            }
+        },
         setSearchParam(
             state: InitialStateType,
-            action: PayloadAction<{ productName: string }>,
+            action: PayloadAction<{ search: string }>,
         ): void {
-            state.search = action.payload.productName;
+            state.search = action.payload.search;
         },
+        // clearSearch(state: InitialStateType, action: PayloadAction<{ search: '' }>) {
+        //     state.search = action.payload.search;
+        // },
     },
     extraReducers: builder => {
         builder.addCase(getProducts.fulfilled, (state, action) => {
@@ -55,7 +70,11 @@ const slice = createSlice({
     },
 });
 
-export const { setSearchParam } = slice.actions;
+export const {
+    setSearchParam,
+    setIsAddedToCart,
+    // clearSearch
+} = slice.actions;
 export const productsReducer = slice.reducer;
 
 export type ProductType = {
@@ -64,4 +83,5 @@ export type ProductType = {
     productName: string;
     productDescription: string;
     pricePerUnit: number;
+    isAddedToCart: boolean;
 };

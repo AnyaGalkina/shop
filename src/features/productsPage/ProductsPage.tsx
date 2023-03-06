@@ -1,6 +1,6 @@
 import React, { ReactElement, useEffect } from 'react';
 
-import { useAppDispatch, useAppSelector, Search } from '../../common';
+import { Search, useAppDispatch, useAppSelector } from '../../common';
 
 import { NotFoundSearchResult } from './notFoundSearchResult/NotFoundSearchResult';
 import { ProductItem } from './productItem';
@@ -17,12 +17,17 @@ export const ProductsPage = (): ReactElement => {
     const isSearchResultEmpty = products.length === 0 && search;
 
     const onSearchClickHandler = (productName: string): void => {
-        dispatch(setSearchParam({ productName }));
+        dispatch(setSearchParam({ search: productName }));
     };
 
     useEffect(() => {
+        // console.log('set up' +  '' + search)
         dispatch(getProducts());
-    }, [dispatch, search]);
+        // return () => {
+        //     console.log('clean up' + '' + search)
+        //     dispatch(setSearchParam({ search: '' }));
+        // };
+    }, [search]);
 
     return (
         <div className={styles.productsPageContainer}>

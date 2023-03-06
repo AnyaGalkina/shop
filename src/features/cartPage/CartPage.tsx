@@ -22,7 +22,7 @@ export const CartPage = (): ReactElement => {
     const disabledOrderClick = disabled || totalSum === 0;
 
     const onStartShoppingClickHandler = (): void => {
-        dispatch(setSearchParam({ productName: '' }));
+        dispatch(setSearchParam({ search: '' }));
         navigate(PATH.PRODUCT_PAGE);
     };
 
