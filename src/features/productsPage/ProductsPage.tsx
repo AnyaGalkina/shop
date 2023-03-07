@@ -21,12 +21,11 @@ export const ProductsPage = (): ReactElement => {
     };
 
     useEffect(() => {
-        // console.log('set up' +  '' + search)
         dispatch(getProducts());
-        // return () => {
-        //     console.log('clean up' + '' + search)
-        //     dispatch(setSearchParam({ search: '' }));
-        // };
+    }, [dispatch]);
+
+    useEffect(() => {
+        dispatch(getProducts());
     }, [search]);
 
     return (
