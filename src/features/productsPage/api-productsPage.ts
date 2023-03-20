@@ -1,14 +1,18 @@
 import { instance } from '../../api';
 import { PATH } from '../../common';
 
-import { ProductType } from './products-reducer';
+import { ParamsType, ProductType } from './products-reducer';
 
 export const productsPageAPI = {
-    getProducts(param: { productName?: string }) {
-        return param.productName
-            ? instance.get<Array<ProductType>>(
-                  `${PATH.GET_PRODUCTS}?productName=${param.productName}`,
-              )
-            : instance.get<Array<ProductType>>(PATH.GET_PRODUCTS);
+    getProducts(params: ParamsType) {
+        return instance.get<ResponseProductsType>(`${PATH.GET_PRODUCTS}`, { params });
     },
+};
+
+export type ResponseProductsType = {
+    pagesCount: number;
+    pagesNumber: number;
+    pageSize: number;
+    totalCount: number;
+    items: ProductType[];
 };
