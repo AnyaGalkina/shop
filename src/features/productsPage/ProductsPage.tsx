@@ -1,24 +1,23 @@
 import React, { ReactElement, useEffect } from 'react';
 
-import { Search, useAppDispatch, useAppSelector } from '../../common';
+import { useAppDispatch, useAppSelector } from '../../common';
 
 import { NotFoundSearchResult } from './notFoundSearchResult/NotFoundSearchResult';
 import { ProductItem } from './productItem';
-import { getProducts, setSearchParam } from './products-reducer';
+import { getProducts } from './products-reducer';
 import styles from './ProductsPage.module.css';
+import { SearchBar } from './searchBar/SearchBar';
 
 export const ProductsPage = (): ReactElement => {
     const dispatch = useAppDispatch();
 
     const products = useAppSelector(state => state.productsPage.products);
     const search = useAppSelector(state => state.productsPage.search);
+    const sortDirection = useAppSelector(state => state.productsPage.sortDirection);
+    const pageNumber = useAppSelector(state => state.productsPage.pageNumber);
     const appStatus = useAppSelector(state => state.app.appStatus);
 
     const isSearchResultEmpty = products.length === 0 && search;
-
-    const onSearchClickHandler = (productName: string): void => {
-        dispatch(setSearchParam({ search: productName }));
-    };
 
     useEffect(() => {
         dispatch(getProducts());
@@ -26,12 +25,12 @@ export const ProductsPage = (): ReactElement => {
 
     useEffect(() => {
         dispatch(getProducts());
-    }, [search]);
+    }, [dispatch, search, sortDirection, pageNumber]);
 
     return (
         <div className={styles.productsPageContainer}>
             <h3>SHOP NOW</h3>
-            <Search onSearchClickHandler={onSearchClickHandler} />
+            <SearchBar />
             <div className={styles.productsContainer}>
                 {isSearchResultEmpty ? (
                     <NotFoundSearchResult />
