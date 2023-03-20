@@ -1,11 +1,30 @@
-import { getProducts, productsReducer, ProductType } from './products-reducer';
+import {
+    getProducts,
+    productsReducer,
+    ProductType,
+    setSortDirection,
+    SortDirectionType,
+} from './products-reducer';
 
-let initialState: { products: Array<ProductType>; search: string };
+let initialState: {
+    products: Array<ProductType>;
+    search: string;
+    pageNumber: number;
+    pagesCount: number;
+    totalCount: number;
+    pageSize: number;
+    sortDirection: SortDirectionType;
+};
 
 beforeEach(() => {
     initialState = {
         products: [],
         search: '',
+        pageNumber: 1,
+        pagesCount: 0,
+        totalCount: 0,
+        pageSize: 6,
+        sortDirection: '',
     };
 });
 
@@ -32,7 +51,7 @@ test('products was added to state', () => {
     const newState = productsReducer(
         initialState,
         getProducts.fulfilled(
-            { products },
+            { products, pagesCount: 0, totalCount: 0 },
             '',
             // @ts-ignore
             { products },
@@ -41,4 +60,14 @@ test('products was added to state', () => {
 
     // eslint-disable-next-line no-magic-numbers
     expect(newState.products.length).toBe(2);
+});
+
+test('sort detraction should be changed to asc ', () => {
+    const newSortDirtection = 'asc' as SortDirectionType;
+    const newState = setSortDirection({
+        sortDirection: newSortDirtection,
+    });
+
+    // @ts-ignore
+    expect(newState.sortDirection).toBe(newSortDirtection);
 });
