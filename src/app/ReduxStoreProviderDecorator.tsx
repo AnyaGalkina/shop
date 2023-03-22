@@ -30,6 +30,11 @@ const initialGlobalState: AppStateType = {
             },
         ],
         search: '',
+        pageNumber: 1,
+        pagesCount: 2,
+        totalCount: 3,
+        pageSize: 3,
+        sortDirection: '',
     },
     cartPage: {
         productsCartList: [
